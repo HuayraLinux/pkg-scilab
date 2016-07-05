@@ -1,3 +1,9 @@
+scilab (5.5.2-3~huayra1) unstabe; urgency=medium
+
+  * fix version de dependencia de libjogl2
+
+ -- Fernando Toledo <ragnarok@docksud.com.ar>  Tue, 05 Jul 2016 01:22:24 -0300
+
 scilab (5.5.2-2) unstable; urgency=medium
 
   * Team upload.
