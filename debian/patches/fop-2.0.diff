@@ -1,0 +1,57 @@
+Description: adapt to fop 2.0 API
+ New way to configure and create Fop. See rationals there:
+ <http://wiki.apache.org/xmlgraphics-fop/FopFactoryConfiguration>
+Author: Gilles Filippini <pini@debian.org>
+Index: scilab-5.5.2/modules/scinotes/src/java/org/scilab/modules/scinotes/utils/CodeExporter.java
+===================================================================
+--- scilab-5.5.2.orig/modules/scinotes/src/java/org/scilab/modules/scinotes/utils/CodeExporter.java
++++ scilab-5.5.2/modules/scinotes/src/java/org/scilab/modules/scinotes/utils/CodeExporter.java
+@@ -36,6 +36,8 @@ import org.scilab.modules.helptools.scil
+ import org.scilab.modules.gui.messagebox.ScilabModalDialog;
+ 
+ import org.apache.fop.apps.FopFactory;
++import org.apache.fop.apps.FopFactoryBuilder;
++import org.apache.fop.apps.FopConfParser;
+ import org.apache.fop.apps.Fop;
+ import org.apache.fop.apps.FOUserAgent;
+ import org.apache.fop.apps.MimeConstants;
+@@ -114,11 +116,11 @@ public class CodeExporter extends FOCode
+      * @param format the page format
+      */
+     public void convert(String code, int[] lineNumberArray, String fileName, String type, String title, PageFormat format) {
+-        FopFactory fopFactory = FopFactory.newInstance();
+         OutputStream out = null;
+ 
+         try {
+-            fopFactory.setUserConfig(new File(ScilabConstants.SCI + "/modules/helptools/etc/fopconf.xml"));
++            FopFactoryBuilder fopFactoryBuilder = new FopConfParser(new File(ScilabConstants.SCI + "/modules/helptools/etc/fopconf.xml")).getFopFactoryBuilder();
++            FopFactory fopFactory = fopFactoryBuilder.build();
+             FOUserAgent userAgent = fopFactory.newFOUserAgent();
+             userAgent.setProducer(CREATOR);
+             userAgent.setTitle(title);
+Index: scilab-5.5.2/modules/helptools/src/java/org/scilab/modules/helptools/FopConverter.java
+===================================================================
+--- scilab-5.5.2.orig/modules/helptools/src/java/org/scilab/modules/helptools/FopConverter.java
++++ scilab-5.5.2/modules/helptools/src/java/org/scilab/modules/helptools/FopConverter.java
+@@ -19,6 +19,8 @@ import javax.xml.transform.stream.Stream
+ import org.apache.fop.apps.FOPException;
+ import org.apache.fop.apps.Fop;
+ import org.apache.fop.apps.FopFactory;
++import org.apache.fop.apps.FopFactoryBuilder;
++import org.apache.fop.apps.FopConfParser;
+ import org.apache.fop.apps.FormattingResults;
+ import org.apache.fop.apps.MimeConstants;
+ import org.scilab.forge.jlatexmath.fop.JLaTeXMathElementMapping;
+@@ -43,10 +45,10 @@ public class FopConverter extends Contai
+         String fileName = outputDirectory + "/" + baseName + "." + format.name().toLowerCase();
+ 
+         try {
+-            FopFactory fopFactory = FopFactory.newInstance();
++            FopFactoryBuilder fopFactoryBuilder = new FopConfParser(new File(System.getenv("SCI") + "/modules/helptools/etc/fopconf.xml")).getFopFactoryBuilder();
++            FopFactory fopFactory = fopFactoryBuilder.build();
+             fopFactory.addElementMapping(new JLaTeXMathElementMapping());
+             fopFactory.getXMLHandlerRegistry().addXMLHandler(new JLaTeXMathXMLHandler());
+-            fopFactory.setUserConfig(new File(System.getenv("SCI") + "/modules/helptools/etc/fopconf.xml"));
+ 
+             // Step 3: Construct fop with desired output format
+             OutputStream out = new BufferedOutputStream(new FileOutputStream(fileName));

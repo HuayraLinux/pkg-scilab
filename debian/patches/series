@@ -1,0 +1,13 @@
+adddemo.diff
+librarypath.diff
+missingaddchapter.diff
+disable-xcos-dep-check.diff
+jh.diff
+depend-scicos.diff
+missing-lib.diff
+#xmlgraphics-commons-2.0.diff
+#fop-2.0.diff
+#batik-1.8.diff
+jvm-archdir-ppc64le.diff
+aarch64-detection.patch
+#libjogl2-java-2.3.2.diff

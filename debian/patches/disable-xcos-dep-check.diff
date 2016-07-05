@@ -1,0 +1,13 @@
+Index: scilab-5.5.0-beta-1/modules/xcos/src/java/org/scilab/modules/xcos/Xcos.java
+===================================================================
+--- scilab-5.5.0-beta-1.orig/modules/xcos/src/java/org/scilab/modules/xcos/Xcos.java	2013-10-01 17:52:31.000000000 +0200
++++ scilab-5.5.0-beta-1/modules/xcos/src/java/org/scilab/modules/xcos/Xcos.java	2013-12-16 16:10:56.000000000 +0100
+@@ -159,7 +159,7 @@
+         }
+ 
+         /* Check the dependencies at startup time */
+-        checkDependencies();
++//        checkDependencies();
+ 
+         /*
+          * Allocate data

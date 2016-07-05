@@ -1,0 +1,17 @@
+Description: Fix Aarch64 detection
+Author: Martin Michlmayr <tbm@cyrius.com>
+
+Index: scilab-5.5.2/bin/scilab
+===================================================================
+--- scilab-5.5.2.orig/bin/scilab
++++ scilab-5.5.2/bin/scilab
+@@ -543,6 +543,9 @@ detect_java_vm() {
+                         armv*)
+                             proc="arm"
+                             ;;
++                        aarch64)
++                            proc="aarch64"
++                            ;;
+                         *)
+                             echo "Could not find the Java configuration for the model <${MODEL}>. Please contact us on http://bugzilla.scilab.org"
+                             ;;

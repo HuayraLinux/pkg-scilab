@@ -1,0 +1,3 @@
+version=3
+http://www.scilab.org/en/development/sources/stable \
+ .*/scilab-([\d\.]+)-src.*.tar.gz debian debian/orig-tar.sh

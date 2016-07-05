@@ -1,0 +1,13 @@
+Index: scilab-5.5.0~beta-1+git~20140426-1522/modules/helptools/src/java/org/scilab/modules/helptools/JarOnlyConverter.java
+===================================================================
+--- scilab-5.5.0~beta-1+git~20140426-1522.orig/modules/helptools/src/java/org/scilab/modules/helptools/JarOnlyConverter.java	2014-04-06 15:21:55.000000000 +0200
++++ scilab-5.5.0~beta-1+git~20140426-1522/modules/helptools/src/java/org/scilab/modules/helptools/JarOnlyConverter.java	2014-04-07 12:06:26.074817658 +0200
+@@ -74,7 +74,7 @@
+             directory.mkdirs();
+             String jhs = new File(outputJavaHelp).getAbsolutePath();
+ 
+-            String[] args = new String[] {"-db", jhs, "-nostopwords", "."};
++            String[] args = new String[] {"-nostopwords", "."};
+ 
+             indexer.compile(args);
+         } catch (Exception e) {

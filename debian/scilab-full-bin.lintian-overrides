@@ -1,0 +1,8 @@
+# the actual binary which should not be called directly
+scilab-full-bin: binary-without-manpage usr/bin/scilab-bin
+# rpath is used to point to Scilab libraries
+scilab-full-bin: binary-or-shlib-defines-rpath usr/lib/jni/libjavasci2.so.* /usr/lib/scilab
+# shlibdeps disabled on libscilab-java 
+scilab-full-bin: missing-dependency-on-libc needed by usr/lib/jni/libjavasci2.so.*
+# Don't really care about this warning
+scilab-full-bin: classpath-contains-relative-path usr/share/java/org.scilab.modules.javasci.jar: ../../jvm/jar/org.scilab.modules.jvm.jar

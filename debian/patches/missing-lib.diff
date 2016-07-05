@@ -1,0 +1,12 @@
+Index: scilab-5.5.0/Makefile.am
+===================================================================
+--- scilab-5.5.0.orig/Makefile.am	2014-04-11 11:51:34.000000000 +0200
++++ scilab-5.5.0/Makefile.am	2014-04-11 16:50:36.487951829 +0200
+@@ -74,6 +74,7 @@
+ if NEED_JAVA
+ scilab_bin_LDADD += \
+ 			$(top_builddir)/modules/console/libsciconsole.la \
++			$(top_builddir)/modules/console/libsciconsole-minimal.la \
+ 			$(top_builddir)/modules/jvm/libscijvm.la \
+ 			$(top_builddir)/modules/commons/libscicommons.la
+ else
